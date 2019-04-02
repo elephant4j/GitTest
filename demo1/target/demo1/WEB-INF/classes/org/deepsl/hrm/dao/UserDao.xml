@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.deepsl.hrm.dao.UserDao">
+
+
+    <insert id="save">
+        insert into `user_inf` (loginname,password,`status`,username) values (#{user3.loginname},#{user3.password},#{user3.status},#{user3.username})
+    </insert>
+
+    <select id="selectAllUser" resultType="user">
+        SELECT * FROM `user_inf`
+    </select>
+
+    <select id="selectById" resultType="user">
+        SELECT * FROM `user_inf` WHERE id = #{user.id}
+    </select>
+
+    <update id="update" >
+        UPDATE `user_inf`
+        <set>
+            <if test="user2.loginname != null">
+                loginname = #{user2.loginname},
+            </if>
+            <if test="user2.password != null">
+                password = #{user2.password},
+            </if>
+            <if test="user2.status != null">
+                `status` = #{user2.status},
+            </if>
+            <if test="user2.createdate != null">
+                createdate = #{user2.createdate},
+            </if>
+            <if test="user2.username != null">
+                username = #{user2.username},
+            </if>
+        </set>
+        WHERE id = #{user2.id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM `user_inf` WHERE id = #{id}
+    </delete>
+
+</mapper>

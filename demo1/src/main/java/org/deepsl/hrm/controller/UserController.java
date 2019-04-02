@@ -104,25 +104,5 @@ public class UserController {
 	 * @param Model model
 	 * */
 
-
-    /**
-     * 处理删除用户请求
-     *
-     * @param ids 需要删除的id字符串
-     */
-    @RequestMapping("user/removeUser")
-    public String removeUser(String ids) {
-		//System.out.println("sssss");
-        //System.out.println(ids);
-		String[] split = ids.split(",");
-		for (String s : split) {
-			hrmService.removeUserById(Integer.valueOf(s));
-		}
-		return "forward:/user/selectUser";
-    }
-	
-	
- 
-	 
 	
 }
